@@ -7,6 +7,7 @@
 .suggestions-from-api{
   box-shadow: 5px 8px 16px 5px rgba(0,0,0,0.2);
   border-radius: 10px;
+  padding: 10px;
 }
 
 .navbar {
@@ -51,3 +52,9 @@
       transform: rotate(360deg);
   }
 }
+
+body, .fixed-bottom{
+  max-width: 850px;
+  margin: auto;
+}
+
