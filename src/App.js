@@ -90,10 +90,10 @@ function App() {
       );
     }
     return (
-      <>
+      <div className="">
         {items.map((suggestion) => (
-          <div className="suggestions-from-api m-auto pb-2">
-            <div className="card p">
+          <div className="suggestions-from-api m-auto mb-2">
+            <div className="card ps-1">
               <div className="card-body">
                 <p className="card-text fw-bold">{suggestion.timestamp}</p>
                 <hr />
@@ -102,7 +102,7 @@ function App() {
             </div>
           </div>
         ))}
-      </>
+      </div>
     );
   };
 
