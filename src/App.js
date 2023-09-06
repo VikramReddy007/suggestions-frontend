@@ -49,7 +49,7 @@ function App() {
       return;
     }
     const response = await fetch(
-      `${DB_URL}/addsuggestion`,
+      `${DB_URL}/ganesh23/addsuggestion`,
       {
         method: "POST",
         body: JSON.stringify(payload),
