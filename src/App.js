@@ -117,7 +117,10 @@ function App() {
           className="rounded-circle"
           alt="Ganesha"
         />
-        <h3 className="text-white ps-5">Mpl Ganesh 2023 Suggestions</h3>
+        <div className="headings">
+          <h3 className="text-white ps-5">Mpl Ganesh 2023 Suggestions</h3>
+          <text className="text-white ps-5 ">Developed by Vikram Reddy😎</text>
+        </div>
       </div>
       {/* </nav> */}
       <br />
