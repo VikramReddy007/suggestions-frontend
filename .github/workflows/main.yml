@@ -1,0 +1,26 @@
+name: Check Suggestions GET Request
+
+on: 
+  push:
+  pull_request:
+  schedule:
+    - cron: "*/1 9-22 * * *"
+
+jobs:
+  check_get_request:
+    name: Check Suggestions GET Request
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Send GET request and verify response
+        run: |
+          response=$(curl -o /dev/null -s -w "%{http_code}" https://suggestions-backend.onrender.com/ganesh23suggestions)
+          echo $response
+          if [ "$response" = "200" ]; then
+            echo "GET request successful - HTTP 200 OK"
+            exit 0
+          else
+            echo "GET request failed - HTTP $response"
+            exit 1
+          fi
