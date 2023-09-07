@@ -26,14 +26,16 @@ function App() {
         }
         const resBody = await response.json();
         setSuggestionsRes(resBody);
+        setShowLoading(false);
       } catch (error) {
         console.log("Error", error);
         window.alert(
           "Could not load suggestions right now. Please try again later!"
         );
+        setShowLoading(true);
       }
     }
-    setShowLoading(false);
+    
     getRecords();
     // eslint-disable-next-line
   }, []);
