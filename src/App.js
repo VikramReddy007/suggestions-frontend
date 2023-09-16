@@ -70,9 +70,57 @@ function App() {
     if (response.ok) {
       setMessage("");
       document.getElementById("suggestion-textarea").value = "";
+      sendWhatsappMsg();
       window.alert("Suggestion submitted successfully");
       window.location.reload(false);
     }
+  }
+
+  const sendWhatsappMsg = (async) => {
+    const apiKey = env.VONAGE_API_KEY;
+    const apiSecret = env.VONAGE_API_SECRET;
+
+    const apiUrl = 'https://messages-sandbox.nexmo.com/v1/messages';
+
+    // Data for the POST request
+    const postData = {
+      from: '14157386102',
+      to: '919533943973',
+      message_type: 'text',
+      text: message,
+      channel: 'whatsapp'
+    };
+
+    // Create the HTTP headers
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      // "Access-Control-Allow-Origin": "*",
+      // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+      'Authorization': `Basic ${btoa(`${apiKey}:${apiSecret}`)}`
+    });
+
+    // Create the request options
+    const requestOptions = {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(postData)
+    };
+
+    // Send the POST request
+    fetch(apiUrl, requestOptions)
+      .then(response =>{
+        response.json();
+      })
+      .then(data => {
+        // Handle the response data here
+        // this.setState({ response: data, error: null });
+      })
+      .catch(error => {
+        // Handle errors
+        window.alert('error:  '+error);
+        // this.setState({ response: null, error: error.message });
+      });
   }
 
   const setMessageOnChange = (e, name) => {
