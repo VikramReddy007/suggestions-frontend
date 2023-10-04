@@ -1,10 +1,6 @@
 name: Check Suggestions GET Request
 
-on: 
-  push:
-  pull_request:
-  schedule:
-    - cron: "*/1 9-22 * * *"
+on: workflow_dispatch
 
 jobs:
   check_get_request:
